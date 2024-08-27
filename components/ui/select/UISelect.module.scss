@@ -1,0 +1,25 @@
+@import "@/styles/mixins.scss";
+
+.select {
+  &:hover {
+    .placeholder {
+      transform: translateX(92%);
+    }
+  }
+}
+
+.placeholder {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  @include transition;
+
+  &::after {
+    content: "ВЫБРАТЬ КВАРТИРУ";
+    position: absolute;
+    left: 0;
+    transform: translateY(92%);
+  }
+}

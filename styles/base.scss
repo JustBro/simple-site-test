@@ -1,0 +1,34 @@
+@import '@/styles/variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  color: $typography-primary;
+  font-family: $font-primary;
+  line-height: 120%;
+}
+
+body {
+  padding: 80px;
+  padding-top: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1920px;
+  margin: auto;
+}
