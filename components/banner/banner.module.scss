@@ -3,7 +3,6 @@
 .title {
   display: flex;
   flex-direction: column;
-  text-transform: uppercase;
   font-size: 31px;
   line-height: 140%;
   font-weight: 400;
@@ -13,7 +12,6 @@
   }
 }
 .bigText {
-  text-transform: uppercase;
   font-size: 200px;
   line-height: 68%;
 }
@@ -26,4 +24,6 @@
 }
 .img {
   width: 100%;
+  height: calc(100dvh - 314px);
+  object-fit: cover;
 }

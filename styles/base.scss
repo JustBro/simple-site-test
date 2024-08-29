@@ -1,4 +1,4 @@
-@import '@/styles/variables.scss';
+@import "@/styles/variables.scss";
 
 * {
   margin: 0;
@@ -6,13 +6,14 @@
   box-sizing: border-box;
   outline: none;
   color: $typography-primary;
+  text-transform: uppercase;
   font-family: $font-primary;
   line-height: 120%;
 }
 
-body {
-  padding: 80px;
-  padding-top: 0;
+main {
+  height: 100dvh;
+  overflow: hidden;
 }
 
 a {
@@ -22,13 +23,19 @@ a {
 button {
   border: none;
   background-color: transparent;
-  text-transform: uppercase;
   font-size: 15px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .wrapper {
   width: 100%;
   max-width: 1920px;
   margin: auto;
+  padding: 80px;
+  padding-top: 124px;
+}
+
+body .scrollbar-track {
+  z-index: 20;
 }

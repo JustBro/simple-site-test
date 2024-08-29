@@ -1,0 +1,92 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.video {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.left {
+  position: relative;
+  width: max-content;
+}
+
+.title {
+  font-size: 18px;
+  line-height: 140%;
+}
+
+.duration {
+  position: absolute;
+  color: $typography-secondary;
+  text-transform: none;
+  font-size: 18px;
+  line-height: 160%;
+}
+
+.right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  color: $typography-invert;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 142px;
+    height: 142px;
+    border: 1px solid $theme-white;
+    border-radius: 50%;
+    @include transition;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $video-overlay;
+    @include transition;
+  }
+  &:hover {
+    &::before {
+      transform: scale(1.2);
+    }
+    &::after {
+      background-color: transparent;
+    }
+
+    .preview {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+
+  svg {
+    min-width: 12px;
+  }
+}
+
+.preview {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include transition;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: $theme-border;
+}

@@ -5,11 +5,15 @@ import Select, {
   GroupBase,
   StylesConfig,
 } from "react-select";
-import IconDropdown from "../../icons/IconDropdown";
-import { UISelectProps, Option } from "@/types/types";
+import IconDropdown from "../../icons/iconDropdown";
 import styles from "./UISelect.module.scss";
+import { Option } from "@/types/types";
 
-export default function UISelect({ options }: UISelectProps) {
+type Props = {
+  options: Option[];
+};
+
+export default function UISelect({ options }: Props) {
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
   const selectStyles: StylesConfig<Option, false, GroupBase<Option>> = {

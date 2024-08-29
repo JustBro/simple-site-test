@@ -3,6 +3,6 @@ export type Option = {
   label: string;
 }
 
-export type UISelectProps = {
-  options: Option[];
+export type UiState = {
+  showVideoModal: boolean;
 }
