@@ -1,9 +1,10 @@
 $theme-white: rgb(255, 255, 255);
 $theme-shadow: rgba(0, 174, 255, 0.4);
 $theme-border: rgb(245, 245, 245);
+$theme-border-dark: rgb(215, 215, 215);
 
 
-$typography-primary: rgb(21, 19, 23);
+$typography-primary: rgb(0, 0, 0);
 $typography-secondary: rgb(136, 136, 136);
 $typography-invert: rgb(255, 255, 255);
 $typography-accent: rgb(47, 128, 237);
@@ -12,7 +13,9 @@ $font-primary: "Proxima Nova";
 
 $video-overlay: rgba(47, 128, 237, 0.3);
 
-$media-l: 1024px;
-$media-m: 768px;
-$media-s: 520px;
-$media-xs: 375px;
+$btn-primary: rgb(47, 128, 237);
+
+$media-xl: 1439px;
+$media-l: 1023px;
+$media-m: 767px;
+$media-s: 359px;

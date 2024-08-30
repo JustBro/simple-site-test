@@ -28,7 +28,7 @@
   }
 }
 
-.title {
+.description {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -51,15 +51,18 @@
   color: $typography-accent;
 }
 
-.text {
+.info {
   display: flex;
   flex-direction: column;
   margin-top: 120px;
   font-size: 20px;
 }
 
-.link {
+.title {
   color: $typography-accent;
+  font-size: 17px;
+  line-height: 140%;
+  font-weight: 400;
 }
 
 .picture {

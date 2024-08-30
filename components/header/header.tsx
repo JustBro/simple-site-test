@@ -1,9 +1,29 @@
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import IconLogo from "../icons/iconLogo";
+import CallFormModal from "../modals/callFormModal/callFormModal";
 import UISelect from "../ui/select/UISelect";
 import styles from "./header.module.scss";
 import { Option } from "@/types/types";
+import { setShowRequestModal } from "@/store/ui-slice";
+import { useRef } from "react";
+import UpAnimation from "../upAnimation/upAnimation";
+import IconPhone from "../icons/iconPhone";
 
 export default function Header() {
+  const dispatch = useAppDispatch();
+
+  const showRequestModal = useAppSelector(
+    (state) => state.uiReducer.showRequestModal
+  );
+
+  const callBtnRef = useRef<HTMLButtonElement>(null);
+  const phoneRef = useRef<HTMLAnchorElement>(null);
+  const menuRef = useRef<HTMLButtonElement>(null);
+
+  const onBtnCall = () => {
+    dispatch(setShowRequestModal(true));
+  };
+
   const options: Option[] = [
     { value: "house1", label: "Дом на улице Ленина" },
     { value: "house2", label: 'Жилой комплекс "Премиум"' },
@@ -20,19 +40,27 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
-        <button className={styles.btnMenu} type="button">
+        <button className={styles.btnMenu} ref={menuRef} type="button">
           <div className={styles.burger}>
             <div className={styles.line}></div>
           </div>
-          Меню
+          <UpAnimation ref={menuRef}>меню</UpAnimation>
         </button>
-        <UISelect options={options} />
+        <UISelect options={options} classList={styles.select} />
         <IconLogo className={styles.logo} />
-        <a className={styles.phone} href="tel:+74955272121">
-          +7 495 527 21 21
+        <a className={styles.phone} ref={phoneRef} href="tel:+74955272121">
+          <UpAnimation ref={phoneRef}>
+            <span>+7 495 527 21 21</span>
+            <IconPhone />
+          </UpAnimation>
         </a>
-        <button className={styles.btnCall}>ЗАКАЗАТЬ ЗВОНОК</button>
+        <button ref={callBtnRef} className={styles.callBtn} onClick={onBtnCall}>
+          <UpAnimation ref={callBtnRef} classList={styles.callBtnText}>
+            заказать звонок
+          </UpAnimation>
+        </button>
       </div>
+      {showRequestModal && <CallFormModal />}
     </header>
   );
 }

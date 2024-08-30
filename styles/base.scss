@@ -34,8 +34,27 @@ button {
   margin: auto;
   padding: 80px;
   padding-top: 124px;
+
+  @media (max-width: $media-xl) {
+    padding: 30px;
+    padding-top: 106px;
+  }
 }
 
 body .scrollbar-track {
   z-index: 20;
+}
+
+.MuiInputBase-root {
+  background-color: transparent;
+}
+
+.btn {
+  &--primary {
+    padding: 24px;
+    border-radius: 100px;
+    background-color: $btn-primary;
+    color: $typography-invert;
+    text-align: center;
+  }
 }

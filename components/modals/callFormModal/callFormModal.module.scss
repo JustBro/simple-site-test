@@ -1,0 +1,8 @@
+.callFormModal {
+  & > button {
+    &::before,
+    &::after {
+      background-color: black;
+    }
+  }
+}

@@ -1,20 +1,24 @@
-import { UiState } from '@/types/types';
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { UiState } from "@/types/types";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: UiState = {
-  showVideoModal: false,
+  showVideo: false,
+  showRequestModal: false,
 };
 
 export const uiSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
-    setShowVideoModal: (state, action: PayloadAction<boolean>) => {
-      state.showVideoModal = action.payload;
+    setShowVideo: (state, action: PayloadAction<boolean>) => {
+      state.showVideo = action.payload;
+    },
+    setShowRequestModal: (state, action: PayloadAction<boolean>) => {
+      state.showRequestModal = action.payload;
     },
   },
 });
 
-export const { setShowVideoModal } = uiSlice.actions;
+export const { setShowVideo, setShowRequestModal } = uiSlice.actions;
 
 export const uiReducer = uiSlice.reducer;

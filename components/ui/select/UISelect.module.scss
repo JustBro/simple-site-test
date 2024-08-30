@@ -1,24 +1,29 @@
-@import "@/styles/mixins.scss";
-
-.select {
-  &:hover {
-    .placeholder {
-      transform: translateX(92%);
-    }
-  }
-}
+@import "@/styles/variables.scss";
 
 .placeholder {
-  position: relative;
-  overflow: hidden;
-  color: #fff;
-  font-weight: 600;
-  @include transition;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-  &::after {
-    content: "ВЫБРАТЬ КВАРТИРУ";
-    position: absolute;
-    left: 0;
-    transform: translateY(92%);
-  }
+.placeholderText,
+.valueText {
+  color: $typography-invert;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.placeholderText {
+  letter-spacing: 1px;
+}
+
+.value {
+  position: absolute;
+  width: calc(100% - 56px);
+}
+
+.valueText {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

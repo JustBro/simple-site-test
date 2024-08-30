@@ -4,5 +4,6 @@ export type Option = {
 }
 
 export type UiState = {
-  showVideoModal: boolean;
+  showVideo: boolean;
+  showRequestModal: boolean;
 }

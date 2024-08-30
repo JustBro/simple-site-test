@@ -2,18 +2,18 @@ import React from "react";
 import styles from "./videoBtn.module.scss";
 import IconPlay from "../icons/iconPlay";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { setShowVideoModal } from "@/store/ui-slice";
+import { setShowVideo } from "@/store/ui-slice";
 import FullscreenVideo from "../fullscreenVideo/fullscreenVideo";
 
 export default function VideoBtn() {
   const dispatch = useAppDispatch();
 
   const showVideoModal = useAppSelector(
-    (state) => state.uiReducer.showVideoModal
+    (state) => state.uiReducer.showVideo
   );
 
   const handlePlay = () => {
-    dispatch(setShowVideoModal(true));
+    dispatch(setShowVideo(true));
   };
   
   return (

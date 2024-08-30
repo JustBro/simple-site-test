@@ -1,0 +1,24 @@
+@import "@/styles/variables.scss";
+@import "@/styles/mixins.scss";
+
+.wrapper {
+  overflow: hidden;
+}
+
+.animate {
+  .textWrapper {
+    transform: translateY(-100%);
+  }
+}
+
+.textWrapper {
+  position: relative;
+  @include transition;
+}
+
+.hidenText {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-wrap: nowrap;
+}

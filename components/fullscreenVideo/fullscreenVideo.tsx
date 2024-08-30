@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useAppDispatch } from "@/store/hooks";
-import { setShowVideoModal } from "@/store/ui-slice";
+import { setShowVideo } from "@/store/ui-slice";
 import styles from "./fullscreenVideo.module.scss";
 import UIBtnClose from "../ui/btnClose/UIBtnClose";
 
@@ -28,12 +28,12 @@ export default function FullscreenVideo() {
 
   const onFullscreenchange = () => {
     if (!document.fullscreenElement) {
-      dispatch(setShowVideoModal(false));
+      dispatch(setShowVideo(false));
     }
   };
 
   const close = () => {
-    dispatch(setShowVideoModal(false));
+    dispatch(setShowVideo(false));
   };
 
   return (
