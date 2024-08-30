@@ -33,7 +33,7 @@ export default function UISelect({ options, classList = "" }: Props) {
   const selectStyles: StylesConfig<Option, false, GroupBase<Option>> = {
     control: (provided: CSSObjectWithLabel) => ({
       ...provided,
-      width: isMediaXL ? "200px" : "240px",
+      width: "240px",
       minHeight: "50px",
       border: "none",
       borderRadius: "118px",
