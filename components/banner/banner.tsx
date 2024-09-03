@@ -3,7 +3,7 @@ import styles from "./banner.module.scss";
 
 export default function Banner() {
   return (
-    <section>
+    <section className="wrapper">
       <img
         className={styles.img}
         src="/images/img-banner.jpg"
@@ -14,7 +14,7 @@ export default function Banner() {
           <span>дом бизнес-класса</span>
           <span>для ценителей роскоши</span>
         </h1>
-        <span className={styles.bigText}>inchapin</span>
+        <img className={styles.bigText} src="/images/inchapin.png" alt="" />
       </div>
     </section>
   );

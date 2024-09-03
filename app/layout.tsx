@@ -7,15 +7,15 @@ import Header from "@/components/header/header";
 import Scrollbar from "smooth-scrollbar";
 import { useEffect, useRef } from "react";
 
-export default function RootLayout({
-  children,
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
-  const scroll = useRef<HTMLElement>(null);
+};
+
+export default function RootLayout({ children }: Props) {
+  const scrollRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const scrollbar = Scrollbar.init(scroll.current!);
+    const scrollbar = Scrollbar.init(scrollRef.current!);
 
     return () => {
       scrollbar.destroy();
@@ -27,10 +27,8 @@ export default function RootLayout({
       <Provider store={store}>
         <body>
           <Header />
-          <main ref={scroll}>
-            <div className="wrapper">
-              {children}
-            </div>
+          <main ref={scrollRef}>
+            <div>{children}</div>
           </main>
         </body>
       </Provider>

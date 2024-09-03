@@ -1,8 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { ComponentType, useRef, useState } from "react";
 import Select, {
-  CSSObjectWithLabel,
+  components,
+  ControlProps,
   GroupBase,
+  MenuProps,
+  SingleValueProps,
   StylesConfig,
+  ValueContainerProps,
 } from "react-select";
 import IconDropdown from "../../icons/iconDropdown";
 import styles from "./UISelect.module.scss";
@@ -15,39 +19,12 @@ type Props = {
 };
 
 export default function UISelect({ options, classList = "" }: Props) {
-  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
-  const [isMediaXL, setIsMediaXL] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const placeholderRef = useRef<HTMLElement>(null);
   const valueRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    onResize();
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
-
-  const selectStyles: StylesConfig<Option, false, GroupBase<Option>> = {
-    control: (provided: CSSObjectWithLabel) => ({
-      ...provided,
-      width: "240px",
-      minHeight: "50px",
-      border: "none",
-      borderRadius: "118px",
-      backgroundColor: "#2F80ED",
-      textTransfome: "uppercase",
-      textWrap: "nowrap",
-      textOverflow: "ellipsis",
-      cursor: "pointer",
-    }),
-    valueContainer: (provided) => ({
-      ...provided,
-      display: "block",
-      padding: isMediaXL ? "0 20px" : "0 28px",
-    }),
+  const selectStyles: StylesConfig<unknown, boolean, GroupBase<unknown>> = {
     option: (provided) => ({
       ...provided,
       fontWeight: "600",
@@ -61,8 +38,22 @@ export default function UISelect({ options, classList = "" }: Props) {
       scrollbarWidth: "thin",
     }),
   };
-
-  const CustomPlaceholder = () => (
+  
+  const CustomControl : React.FC<ControlProps> = (props) => {
+    return (
+      <components.Control {...props} className={styles.control}>
+        {props.children}
+      </components.Control>
+    );
+  };
+  const CustomValueContainer : React.FC<ValueContainerProps> = (props) => {
+    return (
+      <components.ValueContainer {...props} className={styles.valueContainer}>
+        {props.children}
+      </components.ValueContainer>
+    );
+  };
+  const СustomPlaceholder = () => (
     <span ref={placeholderRef} className={styles.placeholder}>
       <UpAnimation ref={placeholderRef} classList={styles.placeholderText}>
         выбрать квартиру
@@ -70,25 +61,25 @@ export default function UISelect({ options, classList = "" }: Props) {
       <IconDropdown />
     </span>
   );
-
-  const CustomSingleValue = ({ data }) => {
+  const СustomSingleValue : ComponentType<SingleValueProps<unknown, boolean, GroupBase<unknown>>> | undefined  = ({ data }) => {
     return (
       <div ref={valueRef} className={styles.value}>
         <UpAnimation ref={valueRef} classList={styles.valueText}>
-          {data.label}
+        {(data as Option).label}
         </UpAnimation>
       </div>
     );
   };
-
-  const handleChange = (evt: Option | null) => {
-    setSelectedOption(evt);
+  const CustomMenu : React.FC<MenuProps> = (props) => {
+    return (
+      <components.Menu {...props} className={styles.selectMenu}>
+        {props.children}
+      </components.Menu>
+    );
   };
 
-  const onResize = () => {
-    const windowWidth = window.innerWidth;
-
-    if (isMediaXL !== windowWidth < 1024) setIsMediaXL(windowWidth < 1024);
+  const handleChange = (evt: unknown) => {
+    setSelectedOption(evt as string);
   };
 
   return (
@@ -96,8 +87,11 @@ export default function UISelect({ options, classList = "" }: Props) {
       components={{
         DropdownIndicator: null,
         IndicatorSeparator: null,
-        Placeholder: CustomPlaceholder,
-        SingleValue: CustomSingleValue,
+        Placeholder: СustomPlaceholder,
+        SingleValue: СustomSingleValue,
+        Control: CustomControl,
+        ValueContainer: CustomValueContainer,
+        Menu: CustomMenu,
       }}
       defaultValue={selectedOption}
       onChange={handleChange}

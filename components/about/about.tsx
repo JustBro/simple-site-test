@@ -1,16 +1,18 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "./about.module.scss";
 import IconForAbout from "../icons/iconForAbout";
 import VideoBtn from "../videoBtn/videoBtn";
 
 export default function About() {
   return (
-    <section className={styles.about}>
+    <section className={styles.about + " wrapper"}>
       <div className={styles.left}>
         <h2 className={styles.title}>о проекте</h2>
         <picture className={styles.picture}>
           <img src="/images/img-about.jpg" alt="Фото дома" />
-          <IconForAbout className={styles.imgIcon} />
+          <div className={styles.circle}>
+            <IconForAbout className={styles.imgIcon} />
+          </div>
         </picture>
       </div>
       <div className={styles.right}>
@@ -27,7 +29,7 @@ export default function About() {
           балконами, лоджиями и террасами В собственной ЗАКРЫТОЙ охраняемой
           территориИ.
         </p>
-        <VideoBtn />
+        <VideoBtn classList={styles.btnVideo} />
       </div>
     </section>
   );

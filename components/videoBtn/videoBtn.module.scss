@@ -16,6 +16,13 @@
 .title {
   font-size: 18px;
   line-height: 140%;
+
+  @media (max-width: $media-max) {
+    font-size: 0.938vw;
+  }
+  @media (max-width: $media-l) {
+    font-size: 10px;
+  }
 }
 
 .duration {
@@ -24,6 +31,13 @@
   text-transform: none;
   font-size: 18px;
   line-height: 160%;
+
+  @media (max-width: $media-max) {
+    font-size: 0.938vw;
+  }
+  @media (max-width: $media-l) {
+    font-size: 10px;
+  }
 }
 
 .right {
@@ -34,18 +48,36 @@
   gap: 8px;
   overflow: hidden;
   width: 240px;
+  min-width: 133px;
   height: 240px;
+  min-height: 133px;
   border-radius: 50%;
   color: $typography-invert;
+
+  @media (max-width: $media-max) {
+    width: 12.51vw;
+    height: 12.51vw;
+  }
+  @media (max-width: $media-l) {
+    gap: 4px;
+    font-size: 10px;
+  }
 
   &::before {
     content: "";
     position: absolute;
     width: 142px;
+    min-width: 77px;
     height: 142px;
+    min-height: 77px;
     border: 1px solid $theme-white;
     border-radius: 50%;
     @include transition;
+
+    @media (max-width: $media-max) {
+      width: 7.3vw;
+      height: 7.3vw;
+    }
   }
   &::after {
     content: "";
@@ -73,6 +105,11 @@
 
   svg {
     min-width: 12px;
+    
+    @media (max-width: $media-l) {
+      min-width: unset;
+      width: 7px;
+    }
   }
 }
 

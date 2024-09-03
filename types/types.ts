@@ -1,9 +1,10 @@
-export type Option = {
+export interface Option {
   value: string;
   label: string;
 }
 
-export type UiState = {
+export interface UiState {
   showVideo: boolean;
   showRequestModal: boolean;
+  isScrollingUp: boolean;
 }
