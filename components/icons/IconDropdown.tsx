@@ -1,4 +1,6 @@
-export default function IconDropdown(props: React.SVGProps<SVGSVGElement>) {
+import { SVGProps } from "react";
+
+export default function IconDropdown(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="14"

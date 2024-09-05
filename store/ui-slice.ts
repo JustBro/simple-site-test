@@ -4,7 +4,6 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 const initialState: UiState = {
   showVideo: false,
   showRequestModal: false,
-  isScrollingUp: true,
 };
 
 export const uiSlice = createSlice({
@@ -17,12 +16,9 @@ export const uiSlice = createSlice({
     setShowRequestModal: (state, action: PayloadAction<boolean>) => {
       state.showRequestModal = action.payload;
     },
-    setIsScrollingUp: (state, action: PayloadAction<boolean>) => {
-      state.isScrollingUp = action.payload;
-    },
   },
 });
 
-export const { setShowVideo, setShowRequestModal, setIsScrollingUp } = uiSlice.actions;
+export const { setShowVideo, setShowRequestModal } = uiSlice.actions;
 
 export const uiReducer = uiSlice.reducer;

@@ -1,24 +1,18 @@
 import React, { forwardRef, ReactNode, useEffect, useState } from "react";
+
 import styles from "./upAnimation.module.scss";
 
-type Props = {
+type UpAnimationProps = {
   classList?: string;
   children: ReactNode;
 };
 
-const UpAnimation = forwardRef<HTMLElement, Props>(
+const UpAnimation = forwardRef<HTMLElement, UpAnimationProps>(
   ({ children, classList = "" }, ref) => {
     const [animate, setAnimate] = useState(false);
     const [refresh, setRefresh] = useState(0);
 
     const parent = ref && "current" in ref ? ref.current : null;
-
-    const onMouseEnter = () => {
-      setAnimate(true);
-    };
-    const onMouseLeave = () => {
-      setAnimate(false);
-    };
 
     useEffect(() => {
       if (!refresh || !parent) {
@@ -38,6 +32,13 @@ const UpAnimation = forwardRef<HTMLElement, Props>(
         }
       };
     }, [parent]);
+
+    const onMouseEnter = () => {
+      setAnimate(true);
+    };
+    const onMouseLeave = () => {
+      setAnimate(false);
+    };
 
     return (
       <div className={`${styles.wrapper} ${animate ? styles.animate : ""}`}>

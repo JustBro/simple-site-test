@@ -1,17 +1,20 @@
 "use client";
 
+import { ReactNode, useEffect, useRef } from "react";
+
 import { store } from "@/store/store";
 import { Provider } from "react-redux";
-import "@/styles/index.scss";
-import Header from "@/components/header/header";
 import Scrollbar from "smooth-scrollbar";
-import { useEffect, useRef } from "react";
 
-type Props = {
-  children: React.ReactNode;
+import Header from "@/components/header/header";
+
+import "@/styles/index.scss";
+
+type RootLayoutProps = {
+  children: ReactNode;
 };
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children }: RootLayoutProps) {
   const scrollRef = useRef<HTMLElement>(null);
 
   useEffect(() => {

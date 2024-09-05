@@ -1,4 +1,6 @@
-export default function IconLogo(props: React.SVGProps<SVGSVGElement>) {
+import { SVGProps } from "react";
+
+export default function IconLogo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="187"
@@ -8,7 +10,7 @@ export default function IconLogo(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <g clip-path="url(#clip0_2001_92)">
+      <g clipPath="url(#clip0_2001_92)">
         <mask
           id="mask0_2001_92"
           style={{maskType: "luminance"}}

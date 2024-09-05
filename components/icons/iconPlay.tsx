@@ -1,4 +1,6 @@
-export default function IconPlay(props: React.SVGProps<SVGSVGElement>) {
+import { SVGProps } from "react";
+
+export default function IconPlay(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="12"

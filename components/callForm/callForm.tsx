@@ -1,40 +1,45 @@
 import React, { ChangeEvent, FormEvent, useRef, useState } from "react";
-import styles from "./callForm.module.scss";
+
 import { TextField } from "@mui/material";
 import InputMask from "react-input-mask";
+
 import UpAnimation from "../upAnimation/upAnimation";
+
+import styles from "./callForm.module.scss";
 
 export default function CallForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [mail, setMail] = useState("");
 
-  const btnSubmit = useRef<HTMLButtonElement>(null);
+  const btnSubmitRef = useRef<HTMLButtonElement>(null);
 
-  const onNmaeChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    setName(evt.target.value);
+  const onNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
   };
-  const onPhoneChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    setPhone(evt.target.value);
+  const onPhoneChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setPhone(event.target.value);
   };
-  const onMailChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    setMail(evt.target.value);
+  const onMailChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setMail(event.target.value);
   };
 
-  const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    console.log("Имя : " + name);
-    console.log("Телефон : " + phone);
-    console.log("E-mail : " + mail);
+  const handleSubmit = () => {
+    setName("");
+    setPhone("");
+    setMail("");
+    console.log(`Имя : ${name}`);
+    console.log(`Телефон : ${phone}`);
+    console.log(`E-mail : ${mail}`);
   };
 
   return (
     <section className={styles.callForm}>
       <h2 className={styles.title}>заказать звонок</h2>
-      <form action="" onSubmit={onSubmit}>
+      <form action="">
         <div className={styles.inputs}>
           <TextField
-            onChange={onNmaeChange}
+            onChange={onNameChange}
             name={name}
             value={name}
             label="ваше имя"
@@ -71,11 +76,14 @@ export default function CallForm() {
           <a href="#">политикой обработки персональных данных</a>
         </p>
         <button
+          onClick={handleSubmit}
           className={`${styles.btnSubmit} btn btn--primary`}
-          type="submit"
-          ref={btnSubmit}
+          ref={btnSubmitRef}
+          type="button"
         >
-          <UpAnimation ref={btnSubmit} classList={styles.btnSubmitText}>отправить</UpAnimation>
+          <UpAnimation ref={btnSubmitRef} classList={styles.btnSubmitText}>
+            отправить
+          </UpAnimation>
         </button>
       </form>
     </section>

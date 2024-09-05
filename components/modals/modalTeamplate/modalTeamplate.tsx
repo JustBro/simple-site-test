@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
-import styles from "./modalTeamplate.module.scss";
+import React, { ReactNode, useEffect, useState } from "react";
+
 import ReactDOM from "react-dom";
+
 import UIBtnClose from "@/components/ui/btnClose/UIBtnClose";
 
-type Props = {
-  children?: React.ReactNode;
+import styles from "./modalTeamplate.module.scss";
+
+type ModalTeamplateProps = {
+  children?: ReactNode;
   onClose: () => void;
   classList?: string;
 };
 
-export default function ModalTeamplate({ children, onClose, classList }: Props) {
+export default function ModalTeamplate({ children, onClose, classList }: ModalTeamplateProps) {
   const [hide, setHide] = useState(false);
 
   useEffect(() => {
@@ -20,24 +23,23 @@ export default function ModalTeamplate({ children, onClose, classList }: Props) 
     };
   }, []);
 
-  const close = () => {
+  const handleClose = () => {
     setHide(true);
     setTimeout(() => {
       onClose();
     }, 300);
   };
-
-  const handleKeyDown = (evt: KeyboardEvent) => {
-    if (evt.key === "Escape") {
-      close();
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      handleClose();
     }
   };
 
   return ReactDOM.createPortal(
-    <section className={`${styles.modal} ${hide ? styles.modalHide : ""} ${classList}`}>
-      <UIBtnClose close={close} />
+    <div className={`${styles.modal} ${hide ? styles.modalHide : ""} ${classList}`}>
+      <UIBtnClose onClose={handleClose} />
       {children}
-    </section>,
+    </div>,
     document.querySelector("body")!
   );
 }

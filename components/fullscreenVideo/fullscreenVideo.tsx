@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from "react";
+
 import { useAppDispatch } from "@/store/hooks";
 import { setShowVideo } from "@/store/ui-slice";
-import styles from "./fullscreenVideo.module.scss";
+
 import UIBtnClose from "../ui/btnClose/UIBtnClose";
+
+import styles from "./fullscreenVideo.module.scss";
 
 export default function FullscreenVideo() {
   const dispatch = useAppDispatch();
@@ -19,26 +22,25 @@ export default function FullscreenVideo() {
       video.play();
     };
 
-    document.addEventListener("fullscreenchange", onFullscreenchange);
+    document.addEventListener("fullscreenchange", onFullscreenChange);
 
     return () => {
-      document.removeEventListener("fullscreenchange", onFullscreenchange);
+      document.removeEventListener("fullscreenchange", onFullscreenChange);
     };
   }, []);
 
-  const onFullscreenchange = () => {
+  const onFullscreenChange = () => {
     if (!document.fullscreenElement) {
       dispatch(setShowVideo(false));
     }
   };
-
-  const close = () => {
+  const handleClose = () => {
     dispatch(setShowVideo(false));
   };
 
   return (
     <div ref={containerRef} className={styles.video}>
-      <UIBtnClose close={close} />
+      <UIBtnClose onClose={handleClose} />
       <video controls ref={videoRef} src="/video/video.mp4"></video>
     </div>
   );

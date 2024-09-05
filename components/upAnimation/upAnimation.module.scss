@@ -13,7 +13,7 @@
 
 .textWrapper {
   position: relative;
-  @include transition;
+  @include transition(transform);
 }
 
 .hidenText {

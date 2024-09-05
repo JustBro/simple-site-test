@@ -1,4 +1,5 @@
-import React, { ComponentType, useRef, useState } from "react";
+import React, { ComponentType, FC, useRef, useState } from "react";
+
 import Select, {
   components,
   ControlProps,
@@ -8,17 +9,20 @@ import Select, {
   StylesConfig,
   ValueContainerProps,
 } from "react-select";
-import IconDropdown from "../../icons/iconDropdown";
-import styles from "./UISelect.module.scss";
-import { Option } from "@/types/types";
-import UpAnimation from "@/components/upAnimation/upAnimation";
 
-type Props = {
+import { Option } from "@/types/types";
+
+import UpAnimation from "@/components/upAnimation/upAnimation";
+import IconDropdown from "../../icons/iconDropdown";
+
+import styles from "./UISelect.module.scss";
+
+type UISelectProps = {
   options: Option[];
   classList?: string;
 };
 
-export default function UISelect({ options, classList = "" }: Props) {
+export default function UISelect({ options, classList = "" }: UISelectProps) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const placeholderRef = useRef<HTMLElement>(null);
@@ -39,14 +43,14 @@ export default function UISelect({ options, classList = "" }: Props) {
     }),
   };
   
-  const CustomControl : React.FC<ControlProps> = (props) => {
+  const CustomControl : FC<ControlProps> = (props) => {
     return (
       <components.Control {...props} className={styles.control}>
         {props.children}
       </components.Control>
     );
   };
-  const CustomValueContainer : React.FC<ValueContainerProps> = (props) => {
+  const CustomValueContainer : FC<ValueContainerProps> = (props) => {
     return (
       <components.ValueContainer {...props} className={styles.valueContainer}>
         {props.children}
@@ -70,7 +74,7 @@ export default function UISelect({ options, classList = "" }: Props) {
       </div>
     );
   };
-  const CustomMenu : React.FC<MenuProps> = (props) => {
+  const CustomMenu : FC<MenuProps> = (props) => {
     return (
       <components.Menu {...props} className={styles.selectMenu}>
         {props.children}
@@ -78,8 +82,8 @@ export default function UISelect({ options, classList = "" }: Props) {
     );
   };
 
-  const handleChange = (evt: unknown) => {
-    setSelectedOption(evt as string);
+  const onSelectChange = (event: unknown) => {
+    setSelectedOption(event as string);
   };
 
   return (
@@ -94,11 +98,11 @@ export default function UISelect({ options, classList = "" }: Props) {
         Menu: CustomMenu,
       }}
       defaultValue={selectedOption}
-      onChange={handleChange}
+      onChange={onSelectChange}
       options={options}
       styles={selectStyles}
       isSearchable={false}
-      className={styles.select + " " + classList}
+      className={`${styles.select} ${classList}`}
     />
   );
 }

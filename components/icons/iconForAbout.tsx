@@ -1,4 +1,6 @@
-export default function IconForAbout(props: React.SVGProps<SVGSVGElement>) {
+import { SVGProps } from "react";
+
+export default function IconForAbout(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="63"

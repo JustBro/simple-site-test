@@ -43,7 +43,6 @@
   text-overflow: ellipsis;
   font-size: 15px;
   cursor: pointer;
-  @include transition;
 
   @media (max-width: $media-xxl) {
     width: 204px;

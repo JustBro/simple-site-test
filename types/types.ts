@@ -6,5 +6,4 @@ export interface Option {
 export interface UiState {
   showVideo: boolean;
   showRequestModal: boolean;
-  isScrollingUp: boolean;
 }
