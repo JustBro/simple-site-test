@@ -1,9 +1,9 @@
-import React, { ChangeEvent, FormEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 
-import { TextField } from "@mui/material";
-import InputMask from "react-input-mask";
+import { FormControl, Input, InputLabel } from "@mui/material";
 
 import UpAnimation from "../upAnimation/upAnimation";
+import PhoneMask from "../phoneMask/phoneMask";
 
 import styles from "./callForm.module.scss";
 
@@ -38,38 +38,37 @@ export default function CallForm() {
       <h2 className={styles.title}>заказать звонок</h2>
       <form action="">
         <div className={styles.inputs}>
-          <TextField
-            onChange={onNameChange}
-            name={name}
-            value={name}
-            label="ваше имя"
-            required
-            variant="filled"
-          />
-          <InputMask
-            mask="+7 (999) 999-99-99"
-            name={phone}
-            value={phone}
-            onChange={onPhoneChange}
-          >
-            {() => (
-              <TextField
-                label="Телефон"
-                required
-                variant="filled"
-                InputLabelProps={{
-                  shrink: phone ? true : false,
-                }}
-              />
-            )}
-          </InputMask>
-          <TextField
-            onChange={onMailChange}
-            value={mail}
-            label="e-mail"
-            required
-            variant="filled"
-          />
+          <FormControl>
+            <InputLabel htmlFor="name-input">ваше имя</InputLabel>
+            <Input
+              className={styles.input}
+              value={name}
+              onChange={onNameChange}
+              id="name-input"
+              required
+            />
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="phone-input">телефон</InputLabel>
+            <Input
+              className={styles.input}
+              value={phone}
+              onChange={onPhoneChange}
+              id="phone-input"
+              required
+              inputComponent={PhoneMask as any}
+            />
+          </FormControl>
+          <FormControl>
+            <InputLabel htmlFor="mail-input">e-mail</InputLabel>
+            <Input
+              className={styles.input}
+              value={mail}
+              onChange={onMailChange}
+              id="mail-input"
+              required
+            />
+          </FormControl>
         </div>
         <p className={styles.policy}>
           Нажимая на кнопку «Отправить», вы ознакомлены и соглашаетесь с
