@@ -31,6 +31,8 @@
 .bigText {
   width: 100%;
   max-width: 862px;
+  height: min-content;
+  object-fit: contain;
 
   @media (max-width: $media-xxl) {
     max-width: 717px;

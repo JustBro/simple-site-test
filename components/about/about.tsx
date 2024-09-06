@@ -34,7 +34,7 @@ export default function About() {
           </h2>
           <p className={styles.info}>
             <span className={styles.textAccent}>
-              Квартиры от 65 до 356 м2 с чистовой отделкой,
+              Квартиры от 65 до 356 м<sup>2</sup> с чистовой отделкой,
             </span>
             балконами, лоджиями и террасами В собственной ЗАКРЫТОЙ охраняемой
             территориИ.

@@ -2,28 +2,13 @@ import { useRef } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setShowRequestModal } from "@/store/ui-slice";
-import { Option } from "@/types/types";
 
 import IconLogo from "../icons/iconLogo";
 import CallFormModal from "../modals/callFormModal/callFormModal";
-import UISelect from "../ui/select/UISelect";
 import UpAnimation from "../upAnimation/upAnimation";
 import IconPhone from "../icons/iconPhone";
 
 import styles from "./header.module.scss";
-
-const options: Option[] = [
-  { value: "house1", label: "Дом на улице Ленина" },
-  { value: "house2", label: 'Жилой комплекс "Премиум"' },
-  { value: "house3", label: 'Коттеджный посёлок "ЭкоЛайф"' },
-  { value: "house4", label: 'Апартаменты "Солнечный берег"' },
-  { value: "house5", label: 'Квартиры в "Гармония"' },
-  { value: "house6", label: "Элитные дома на Неве" },
-  { value: "house7", label: 'Жилой комплекс "Новая Москва"' },
-  { value: "house8", label: 'Квартиры в "Городском стиле"' },
-  { value: "house9", label: 'Комплекс "Сити Парк"' },
-  { value: "house10", label: 'Жилой комплекс "Северное сияние"' },
-];
 
 export default function Header() {
   const dispatch = useAppDispatch();
@@ -49,7 +34,6 @@ export default function Header() {
           </div>
           <UpAnimation ref={menuRef}>меню</UpAnimation>
         </button>
-        <UISelect options={options} classList={styles.select} />
         <IconLogo className={styles.logo} />
         <a className={styles.phone} ref={phoneRef} href="tel:+74955272121">
           <UpAnimation ref={phoneRef}>

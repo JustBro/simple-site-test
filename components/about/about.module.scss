@@ -111,6 +111,12 @@
 
 .textAccent {
   color: $typography-accent;
+  
+  sup {
+    display: inline-block;
+    transform: scale(0.8);
+    color: $typography-accent;
+  }
 }
 
 .info {

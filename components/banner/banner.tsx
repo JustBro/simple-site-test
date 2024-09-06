@@ -13,6 +13,7 @@ export default function Banner() {
         alt="Дом бизнес-класса"
         width={1760}
         height={600}
+        priority
       />
       <div className={styles.bottom}>
         <h1 className={styles.title}>

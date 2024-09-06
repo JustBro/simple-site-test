@@ -9,6 +9,7 @@
 }
 
 .wrapper {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 45px;
@@ -34,10 +35,19 @@
 }
 
 .logo {
-  margin: auto;
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
 
+  @media (max-width: $media-xxl) {
+    top: 20px;
+  }
   @media (max-width: $media-l) {
-    order: 3;
+    top: 44px;
+  }
+  @media (max-width: $media-m) {
+    top: 23px;
   }
 }
 
@@ -83,6 +93,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-right: auto;
 
   @media (max-width: $media-xxl) {
     gap: 12px;
@@ -185,14 +196,5 @@
   }
   @media (max-width: $media-xl) {
     font-size: 12px;
-  }
-}
-
-.select {
-  @media (max-width: $media-l) {
-    order: 4;
-  }
-  @media (max-width: $media-m) {
-    display: none;
   }
 }
